@@ -1,0 +1,13 @@
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: linear-gradient(#737ce1, #c6cdfb);
+  font-family: "Comfortaa", cursive;
+  color: white;
+  padding-top: 50px;
+  max-width: 800px;
+  margin: auto;
+}
