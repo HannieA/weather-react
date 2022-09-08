@@ -4,7 +4,6 @@ import { createRoot } from "react-dom/client";
 import "./styles.css";
 
 import Header from "./Header";
-import CurrentWeather from "./CurrentWeather";
 import Forecast from "./Forecast";
 import Footer from "./Footer";
 
@@ -14,7 +13,6 @@ const root = createRoot(rootElement);
 root.render(
   <StrictMode>
     <Header />
-    <CurrentWeather />
     <Forecast />
     <Footer />
   </StrictMode>
