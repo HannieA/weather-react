@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import axios from "axios";
+
 import "./Header.css";
 import "./CurrentWeather.css";
-import axios from "axios";
+import FormatedDate from "./FormatedDate";
 
 export default function Header() {
   const [ready, setReady] = useState(false);
-
   const [weatherData, setWeatherData] = useState("");
 
   function handleForecast(response) {
@@ -15,8 +16,10 @@ export default function Header() {
       wind: response.data.wind.speed,
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
+      date: new Date(response.data.dt * 1000),
     });
     setReady(true);
+    console.log(response.data);
   }
 
   if (ready) {
@@ -41,13 +44,16 @@ export default function Header() {
                       <h1 id="city">{weatherData.city}</h1>
                       <i className="fa-regular fa-sun icon"></i>
                     </li>
-                    <li className="currentDate"></li>
+                    <li className="currentDate">
+                      <FormatedDate date={weatherData.date} />
+                    </li>
                     <li className="temp">
                       <span id="temperature">
                         {Math.round(weatherData.temp)}
                       </span>{" "}
                       <span className="celsius"> ℃</span>
                     </li>
+
                     <div className="description">
                       <li id="conditions">{weatherData.description}</li>
                       <li>
@@ -74,7 +80,8 @@ export default function Header() {
     );
   } else {
     let city = "Sunnyvale";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=b742faf6701ac8c3f14958c33ae33625&units=metric`;
+    let appid = "acf4d75c757427f610fc2a61d3b68446";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${appid}&units=metric`;
     axios.get(apiUrl).then(handleForecast);
   }
 }
