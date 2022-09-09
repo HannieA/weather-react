@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import "./Header.css";
-import "./CurrentWeather.css";
-import FormatedDate from "./FormatedDate";
 
-export default function Header() {
+import CurrentWeather from "./CurrentWeather";
+
+export default function Header(props) {
   const [ready, setReady] = useState(false);
   const [weatherData, setWeatherData] = useState("");
+  const [changedCity, setChangedCity] = useState(props.city);
 
   function handleForecast(response) {
     setWeatherData({
@@ -21,67 +22,38 @@ export default function Header() {
     setReady(true);
     console.log(response.data);
   }
+  function searchResult() {
+    let appid = "acf4d75c757427f610fc2a61d3b68446";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${changedCity}&appid=${appid}&units=metric`;
+    axios.get(apiUrl).then(handleForecast);
+  }
+  function handleSubmit(event) {
+    event.preventDefault();
+    searchResult();
+  }
+
+  function handleCity(event) {
+    setChangedCity(event.target.value);
+  }
 
   if (ready) {
     return (
       <div className="header">
-        <form>
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="type a city"
             id="searchForm"
             autoComplete="off"
+            onChange={handleCity}
           />
           <input type="submit" value="search" id="searchButton" />
         </form>
-        <section className="currentWheather">
-          <div className="container">
-            <div className="row">
-              <div className="col">
-                <div className="currentDay">
-                  <ul className="currentTemp">
-                    <li>
-                      <h1 id="city">{weatherData.city}</h1>
-                      <i className="fa-regular fa-sun icon"></i>
-                    </li>
-                    <li className="currentDate">
-                      <FormatedDate date={weatherData.date} />
-                    </li>
-                    <li className="temp">
-                      <span id="temperature">
-                        {Math.round(weatherData.temp)}
-                      </span>{" "}
-                      <span className="celsius"> ℃</span>
-                    </li>
-
-                    <div className="description">
-                      <li id="conditions">{weatherData.description}</li>
-                      <li>
-                        Wind:{" "}
-                        <span id="wind"> {Math.round(weatherData.wind)}</span>{" "}
-                        km/h, Humidity:
-                        <span id="humidity">
-                          {" "}
-                          {Math.round(weatherData.humidity)}{" "}
-                        </span>
-                        %
-                      </li>
-                    </div>
-                  </ul>
-                </div>
-              </div>
-              <div className="col">
-                <img src="images/sun.svg" alt="cloud" id="background-image" />
-              </div>
-            </div>
-          </div>
-        </section>
+        <CurrentWeather data={weatherData} />
       </div>
     );
   } else {
-    let city = "Sunnyvale";
-    let appid = "acf4d75c757427f610fc2a61d3b68446";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${appid}&units=metric`;
-    axios.get(apiUrl).then(handleForecast);
+    searchResult();
+    return <div>Loading...</div>;
   }
 }
