@@ -2,6 +2,7 @@ import React from "react";
 
 import "./CurrentWeather.css";
 import FormatedDate from "./FormatedDate";
+import Temperature from "./Temperature";
 import WeatherIcon from "./WeatherIcon";
 
 export default function CurrentWeather(props) {
@@ -18,11 +19,7 @@ export default function CurrentWeather(props) {
                 <li className="currentDate">
                   <FormatedDate date={props.data.date} />
                 </li>
-                <li className="temp">
-                  <span id="temperature">{Math.round(props.data.temp)}</span>{" "}
-                  <span className="celsius"> ℃</span>
-                </li>
-
+                <Temperature celsius={Math.round(props.data.temp)} />
                 <div className="description">
                   <li id="conditions">{props.data.description}</li>
                   <li>
