@@ -2,6 +2,7 @@ import React from "react";
 
 import "./CurrentWeather.css";
 import FormatedDate from "./FormatedDate";
+import WeatherIcon from "./WeatherIcon";
 
 export default function CurrentWeather(props) {
   return (
@@ -13,7 +14,6 @@ export default function CurrentWeather(props) {
               <ul className="currentTemp">
                 <li>
                   <h1 id="city">{props.data.city}</h1>
-                  <i className="fa-regular fa-sun icon"></i>
                 </li>
                 <li className="currentDate">
                   <FormatedDate date={props.data.date} />
@@ -39,7 +39,7 @@ export default function CurrentWeather(props) {
             </div>
           </div>
           <div className="col">
-            <img src="images/sun.svg" alt="cloud" id="background-image" />
+            <WeatherIcon icon={props.data.icon} />
           </div>
         </div>
       </div>

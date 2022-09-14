@@ -18,6 +18,7 @@ export default function Header(props) {
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt * 1000),
+      icon: response.data.weather[0].icon,
     });
     setReady(true);
     console.log(response.data);
