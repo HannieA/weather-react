@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Header.css";
 
 import CurrentWeather from "./CurrentWeather";
+import Forecast from "./Forecast";
 
 export default function Header(props) {
   const [ready, setReady] = useState(false);
@@ -13,6 +14,7 @@ export default function Header(props) {
   function handleForecast(response) {
     setWeatherData({
       city: response.data.name,
+      coordinates: response.data.coord,
       temp: response.data.main.temp,
       wind: response.data.wind.speed,
       description: response.data.weather[0].description,
@@ -21,8 +23,8 @@ export default function Header(props) {
       icon: response.data.weather[0].icon,
     });
     setReady(true);
-    console.log(response.data);
   }
+
   function searchResult() {
     let appid = "acf4d75c757427f610fc2a61d3b68446";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${changedCity}&appid=${appid}&units=metric`;
@@ -51,6 +53,7 @@ export default function Header(props) {
           <input type="submit" value="search" id="searchButton" />
         </form>
         <CurrentWeather data={weatherData} />
+        <Forecast coordinates={weatherData.coordinates} />
       </div>
     );
   } else {
