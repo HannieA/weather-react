@@ -38,8 +38,8 @@ export default function Forecast(props) {
       </section>
     );
   } else {
-    let lon = props.lon;
-    let lat = props.lat;
+    let lon = props.coordinates.lon;
+    let lat = props.coordinates.lat;
     let apiId = "acf4d75c757427f610fc2a61d3b68446";
     let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiId}`;
 
