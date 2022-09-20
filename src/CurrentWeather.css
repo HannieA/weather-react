@@ -32,7 +32,7 @@ div.description {
 }
 
 a {
-  color: white;
+  color: #e64398;
 }
 
 ul {
@@ -73,7 +73,7 @@ i {
 #temperature,
 #wind,
 #humidity {
-  color: #ec6642;
+  color: #e64398;
   font-weight: bold;
 }
 

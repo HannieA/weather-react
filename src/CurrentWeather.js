@@ -10,7 +10,7 @@ export default function CurrentWeather(props) {
     <section className="currentWheather">
       <div className="container">
         <div className="row">
-          <div className="col">
+          <div className="col-6">
             <div className="currentDay">
               <ul className="currentTemp">
                 <li>
@@ -35,8 +35,8 @@ export default function CurrentWeather(props) {
               </ul>
             </div>
           </div>
-          <div className="col">
-            <WeatherIcon icon={props.data.icon} size={250} color="#7980e4" />
+          <div className="col-5">
+            <WeatherIcon icon={props.data.icon} size={350} color="#E64398" />
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 #searchForm {
-  border: 1px solid #596aca;
+  border: 1px solid #b39bc8;
   color: gray;
   border-radius: 10px;
   height: 37px;
@@ -8,20 +8,22 @@
   text-align: left;
   padding-left: 10px;
   margin-left: 13px;
+  background-color: #f0ebf4;
 }
 
 #searchButton {
-  background-color: white;
+  background-color: #f0ebf4;
+  border: 1px solid #b39bc8;
   color: gray;
   font-size: smaller;
   text-align: center;
   margin-left: 10px;
   padding: 7px 40px;
   border-radius: 10px;
-  border: none;
+
   transition: 180ms ease-in-out;
 }
 #searchButton:hover {
-  background-color: #6167dc;
-  color: white;
+  background-color: #b39bc8;
+  color: #f0ebf4;
 }
