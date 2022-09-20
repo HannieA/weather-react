@@ -36,7 +36,7 @@ export default function CurrentWeather(props) {
             </div>
           </div>
           <div className="col">
-            <WeatherIcon icon={props.data.icon} />
+            <WeatherIcon icon={props.data.icon} size={250} color="#7980e4" />
           </div>
         </div>
       </div>

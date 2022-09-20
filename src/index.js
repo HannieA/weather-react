@@ -4,7 +4,6 @@ import { createRoot } from "react-dom/client";
 import "./styles.css";
 
 import Header from "./Header";
-import Forecast from "./Forecast";
 import Footer from "./Footer";
 
 const rootElement = document.getElementById("root");
@@ -13,7 +12,6 @@ const root = createRoot(rootElement);
 root.render(
   <StrictMode>
     <Header city="Sunnyvale" />
-    <Forecast />
     <Footer />
   </StrictMode>
 );
