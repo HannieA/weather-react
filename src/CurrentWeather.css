@@ -25,7 +25,12 @@ span#temperature {
 }
 .celsius {
   font-size: 25px;
+  color: #e64398;
 }
+.line {
+  color: #f0ebf4;
+}
+
 div.description {
   font-size: 18px;
   line-height: 28px;
@@ -33,7 +38,11 @@ div.description {
 }
 
 a {
-  color: #e64398;
+  color: #f0ebf4;
+}
+
+a:hover {
+  color: #b39bc8;
 }
 
 ul {
